@@ -1,0 +1,30 @@
+{
+    "name": "n8n-nodes-weather-alert",
+    "version": "0.1.0",
+    "description": "n8n node: Weather Alert (OpenWeather) — TypeScript",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "prepack": "npm run build"
+    },
+    "keywords": [
+        "n8n-nodes",
+        "n8n",
+        "weather",
+        "openweather"
+    ],
+    "author": "Tamerlan Musayev",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.4.0",
+        "dotenv": "^17.2.3",
+        "n8n-core": "^1.117.0",
+        "n8n-workflow": "^1.115.0"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^8.2.3",
+        "@types/node": "^18.0.0",
+        "typescript": "^5.0.0"
+    }
+}

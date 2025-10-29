@@ -1,0 +1,74 @@
+{
+    "nodes": [
+        {
+            "id": "1",
+            "name": "Start",
+            "type": "n8n-nodes-base.start",
+            "position": [250, 250]
+        },
+        {
+            "id": "2",
+            "name": "Weather Alert",
+            "type": "n8n-nodes-weather-alert.WeatherAlert",
+            "position": [450, 250],
+            "parameters": {
+                "mode": "forecast",
+                "locationType": "city",
+                "city": "Moscow",
+                "units": "metric",
+                "conditions": [
+                    {
+                        "conditionValues": [
+                            {
+                                "type": "rain",
+                                "threshold": 0
+                            }
+                        ]
+                    }
+                ],
+                "returnMode": "both"
+            }
+        },
+        {
+            "id": "3",
+            "name": "If",
+            "type": "n8n-nodes-base.if",
+            "position": [650, 250],
+            "parameters": {
+                "conditions": [
+                    {
+                        "value1": "={{$json[\"alert\"]}}",
+                        "operation": "isTrue"
+                    }
+                ]
+            }
+        }
+    ],
+    "connections": {
+        "1": {
+            "main": [
+                [
+                    {
+                        "node": "2",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "2": {
+            "main": [
+                [
+                    {
+                        "node": "3",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "3": {
+            "main": [[], []]
+        }
+    }
+}
